@@ -1,0 +1,11 @@
+<div style="text-align: center;" >
+<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" style="padding-bottom: 3%;" class="box">
+        <h2>Register</h2>  
+          <input type="number"  placeholder="User Id" [(ngModel)]="Id" formControlName="id"> 
+          <input type="text"  placeholder="User Name" [(ngModel)]="fname" formControlName="firstname">         
+          <input type="text" placeholder="User Email" [(ngModel)]="Email" formControlName="email">                      
+          <button style="margin-top: 3%;" type="submit" class="button">Submit</button> 
+               
+ </form>
+
+</div>
