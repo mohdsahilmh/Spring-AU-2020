@@ -46,11 +46,12 @@ public class shoppingcart {
 	}
 	static void addtocart(){
 		    int i=0;
-		    System.out.println("Available Products are:");  
+		    System.out.println("Available Products are:");
+		    System.out.println("=================================================================================================");
           	for(products p : pro){
               System.out.println("Product id: "+p.pid+"  "+"Product Name: "+p.pname+"  "+"Product Quantity: "+p.pq+"  "+"Product Price:"+p.pp+"");
           	}
-          	System.out.println();
+          	System.out.println("=================================================================================================");
           	System.out.println("Enter the Product Id and Quantity to add to cart");
           	Scanner sc = new Scanner(System.in);
           	int in = sc.nextInt();
@@ -67,9 +68,11 @@ public class shoppingcart {
 	}
 	static void viewcart() {
 		System.out.println("items in the cart:");
+		 System.out.println("=================================================================================================");
 		for(products p : cart){
             System.out.println("Product id: "+p.pid+"  "+"Product Name: "+p.pname+"  "+"Product Quantity: "+p.pq+"  "+"Product Price:"+p.pp+" ");          		
         	}
+		 System.out.println("=================================================================================================");
 	}
 	static void removefromcart() {
 		viewcart();
@@ -98,7 +101,14 @@ public class shoppingcart {
       	  sum = sum+p.pp;
       	}
 		int odid = random.nextInt(1000);
-		od.add(new order(odid,name,pro));
+		od.add(new order(odid,name,cart));
+		for(products p:cart) {
+			for(products q:pro) {
+				if(p.pid==q.pid) {
+					q.pq = q.pq-p.pq;
+				}
+			}
+		}
 		System.out.println("order placed with total amount : "+sum+" and order id :"+odid+" ");
 		cart.clear();
 	}
@@ -109,6 +119,7 @@ public class shoppingcart {
 				System.out.println("Product Name: "+p.pname+" "+"Product Quantity:"+p.pq+"Product Price :"+p.pp);
 			}
 		}
+		System.out.println("=================================================================================================");
 		System.out.println("Enter the order id to cancel the order:");
       	Scanner sc = new Scanner(System.in);
       	int in = sc.nextInt();
