@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+~ Hibernate, Relational Persistence for Idiomatic Java
+~
+~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+-->
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+<session-factory>
+
+<!-- Database connection settings -->
+<property name="connection.driver_class">org.postgresql.Driver</property>
+<property name="connection.url">jdbc:postgresql://localhost:8080/demo1</property>
+<property name="connection.username">postgres</property>
+<property name="connection.password">root</property>
+
+<!-- JDBC connection pool (use the built-in) -->
+<property name="connection.pool_size">1</property>
+
+<!-- SQL dialect -->
+<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+<!-- Disable the second-level cache -->
+<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+<!-- Echo all executed SQL to stdout -->
+<property name="show_sql">true</property>
+
+<!-- Drop and re-create the database schema on startup -->
+<property name="hbm2ddl.auto">create</property>
+
+<!-- Names the annotated entity class -->
+<mapping class="com.session.dto.UserDetails"/>
+<mapping class="com.session.dto.Sneakers"/>
+<mapping class="com.session.dto.SlimFit"/>
+<mapping class="com.session.dto.Shrits"/>
+<mapping class="com.session.dto.Shoes"/>
+<mapping class="com.session.dto.Products"/>
+<mapping class="com.session.dto.Paymentmode"/>
+<mapping class="com.session.dto.Pants"/>
+<mapping class="com.session.dto.Membership"/>
+<mapping class="com.session.dto.Joggers"/>
+<mapping class="com.session.dto.HalfSleeve"/>
+<mapping class="com.session.dto.FullSleeve"/>
+<mapping class="com.session.dto.Casuals"/>
+ <mapping package="com.session.dto"></mapping>
+</session-factory>
+
+</hibernate-configuration>
