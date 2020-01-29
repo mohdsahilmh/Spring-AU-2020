@@ -20,6 +20,9 @@ import com.session.dto.UserDetails;
 
 public class HibernateApp {
   public static void main(String args[]) {
+	  /*I HAVE WRITTEN INITIAL CONDITION ONLY FOR FULLSLEEVE CLASS AND SLIM FIT PANT
+	   * UPDATING AND DELETION FOR SHIRTS
+	   BECAUSE I HAVE IMPLEMENTED ALL THE INHERITENCE AND ALL TYPE OF MAPPINGS IN ONE WHOLE SHOPPING CART PROJECT*/
 	    UserDetails user = new UserDetails();
 	    Products pro =new Products();
 	    FullSleeve fs = null;
@@ -57,7 +60,7 @@ public class HibernateApp {
 	    		delivery_address.setStreet(add);
 	    		delivery_address.setPincode(pin);
 	    		user2.setDelivery_address(delivery_address);
-	    		System.out.println("Do you want membership,each user can have only one membership");
+	    		System.out.println("Do you want membership,each user can have only one membership(yes/no)");
 	    		String ans=sc.next();
 	    		if(ans.equals("yes")) {
 	    			Membership mg = new Membership();
@@ -66,7 +69,8 @@ public class HibernateApp {
 	    		    user2.setMembership(mg);
 	    		    session.save(mg);
 	    		}
-	    		System.out.println("Select the payment mode 1.UPI 2.Wallet 3.Netbanking 4.COD");
+	    		//do not enter the number
+	    		System.out.println("Enter the payment mode 1.UPI 2.Wallet 3.Netbanking 4.COD");
 	    		String res = sc.next();
 	    	    Paymentmode pm = new Paymentmode();
 	    	    pm.setName(res);
@@ -177,11 +181,11 @@ public class HibernateApp {
 	    		for(Products p :prod) {
 	    			System.out.println(p.getId()+" "+p.getName()+" "+p.getProductlist());
 	    		}
-	    		Query q= session.createQuery("delete Products where id =:id");
 	    		int pid = sc.nextInt();
-	    		query.setParameter("id", pid);
+	    		Query q= session.createQuery("delete Products where id =:ID");
+	    		query.setParameter("ID", pid);
 	    		int result = query.executeUpdate();
-	    		 session.save(user2);
+	    		// session.save(user2);
 		    	    session.getTransaction().commit();
 		    		session.close();
 	    		if (result > 0) {
@@ -208,7 +212,7 @@ public class HibernateApp {
 	    
 	    
 		
-//		session.save(vehicle1);
+//	  
 		//session.save(user);
 		session.save(pro);
     	
