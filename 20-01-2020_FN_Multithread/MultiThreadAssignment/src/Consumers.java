@@ -1,10 +1,8 @@
 import java.util.Random;
 
 
-public class Consumers implements Runnable{
-
-	@Override
-	public void run() {
+public class Consumers extends Thread{
+    Runnable Con = () ->{
 		
 		while(true) {
 			synchronized(MarketInventory.fruits) {
@@ -18,7 +16,7 @@ public class Consumers implements Runnable{
 						 MarketInventory.fruits.put(fruit, MarketInventory.fruits.get(fruit)-1);
 						 System.out.println(Thread.currentThread().getName()+" Consumes  "+fruit);
 						 System.out.println("Market has "+fruit+" with capacity "+MarketInventory.fruits.get(fruit));
-						// MarketInventory.fruits.notifyAll();
+                        // MarketInventory.fruits.notifyAll();
 					 }
 				 if(EmptyCap==0) {
 					 try {
@@ -28,7 +26,7 @@ public class Consumers implements Runnable{
 						MarketInventory.fruits.wait();
 						
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
+                      // TODO Auto-generated catch block
 						e.printStackTrace();
 					} 
 					 System.out.println("===================================");
@@ -38,6 +36,5 @@ public class Consumers implements Runnable{
 			}
 		}
 		
-	}
-
+    };
 }
