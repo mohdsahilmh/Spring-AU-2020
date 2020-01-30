@@ -1,9 +1,7 @@
 import java.util.Random;
 
-public class Farmers implements Runnable{
-
-	@Override
-	public void run() {	
+public class Farmers extends Thread{
+    Runnable Far = () ->{
 		synchronized(MarketInventory.fruits) {
 			for(int i=0;i<20;i++) {
 				int FullCap=0;
@@ -39,7 +37,7 @@ public class Farmers implements Runnable{
 						e.printStackTrace();
 					}	
 			}
-		}
-	}
-   
+		};
+	
+}
 
